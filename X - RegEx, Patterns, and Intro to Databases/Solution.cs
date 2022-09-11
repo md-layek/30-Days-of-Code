@@ -1,32 +1,51 @@
-using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+
 
 class Solution
 {
-    static void Main(String[] args)
+    public static void Main(string[] args)
+    
     {
-        var n = int.Parse(Console.ReadLine());
+        int N = Convert.ToInt32(Console.ReadLine().Trim());
+        
+        var list =new List<string>();
 
-        var list = new List<string>();
-
-        for (int i = 0; i < n; i++)
+        for (int NItr = 0; NItr < N; NItr++)
         {
-            var tmp = Console.ReadLine().Split(' ');
-            var name = tmp[0];
-            var email = tmp[1];
+            string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
 
-            if (Regex.IsMatch(email, @".+@gmail\.com$"))
-            {
-                list.Add(name);
+            string firstName = firstMultipleInput[0];
+
+            string emailID = firstMultipleInput[1];
+            
+            if(Regex.IsMatch(emailID, @".+@gmail\.com$")){
+                
+                list.Add(firstName);
+             
             }
-        }
-
-        list.Sort();
-
-        foreach (var name in list)
-        {
-            Console.WriteLine(name);
-        }
+       }
+        
+       list.Sort();
+    
+       foreach(var firstName in list){
+           
+           Console.WriteLine(firstName);
+           
+           }
+           
     }
+    
 }
